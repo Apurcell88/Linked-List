@@ -11,6 +11,8 @@
     },
     "rules": {
         "linebreak-style": ["error", "windows"],
-        "prettier/prettier": ["off", { "singleQuote": true }]
+        "prettier/prettier": ["off", { "singleQuote": true }],
+        "max-classes-per-file": ["error", 2],
+        "no-plusplus": "off"
     }
 }

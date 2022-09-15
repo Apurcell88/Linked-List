@@ -1,43 +1,69 @@
-const Node = (value = null, nextNode = null) => ({
-  // returns an object
-  value,
-  nextNode,
-});
+class Node {
+  constructor(val) {
+    this.val = val;
+    this.next = null;
+  }
+}
 
-const LinkedList = () => {
-  let head = null;
-  let size = 0;
+class LinkedList {
+  constructor() {
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
+  }
 
-  const append = (value) => {
-    const newNode = Node(value);
-    if (head === null) { // if there is no head
-      head = newNode; // create a node for the head
-    } else { // if there is a head
-      let pointer = head; // set pointer to it
-      while (pointer.nextNode !== null) { // if there is another node
-        pointer = pointer.nextNode; // set pointer to that next node
-      }
-      pointer.nextNode = newNode; // create that next node
+  push(val) {
+    const newNode = new Node(val);
+
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = this.head;
+    } else {
+      this.tail.next = newNode;
+      this.tail = newNode;
     }
-    size++; // increase the size of the linked list
-  };
 
-  const prepend = (value) => {
-    const newNode = Node(value);
-    head = newNode;
-    size++;
-  };
+    this.length++;
 
-  const sizeCount = () => size;
+    return this;
+  }
 
-  const getHead = () => {
-    if (head === null) {
-      alert('There is no linked list!');
+  size() {
+    return this.length;
+  }
+
+  head() {
+    // returns the first node
+    return this.head;
+  }
+
+  tail() {
+    // returns the last node
+    return this.tail;
+  }
+
+  at(index) {
+    // returns the node at the given index
+    if (index < 0 || index > this.length) return false;
+
+    let counter = 0;
+    let currentNode = this.head;
+
+    while (counter < index) {
+      currentNode = currentNode.next;
+      counter++;
     }
-    return head;
-  };
 
-  const getTail = () => {
+    return currentNode;
+  }
 
-  };
-};
+  pop() {
+    // removes the last element from the list
+  }
+}
+
+const list = new LinkedList();
+list.push('<3');
+list.push('-_-');
+list.push('whoaaaa');
+// console.log(list);
